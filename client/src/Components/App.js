@@ -20,7 +20,7 @@ function App() {
     <div>
       <Switch>
       <Route exact path="/">
-      <LoginForm onLogin={setUser} />
+      <LoginForm/>
       </Route>  
       <Route exact path="/sign">
       <SignUpForm onLogin={setUser} />

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
   get '/news', to: 'news#get_news'
+  resources :expenses
 
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
