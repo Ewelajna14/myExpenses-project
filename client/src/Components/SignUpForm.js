@@ -1,6 +1,14 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 function SignUpForm(){
+
+    const history = useHistory()
+
+    function handleClick(){
+        history.push("/")
+    } 
+
     return(
         <Container>
       <h1 className=" text-info mt-5 p-3 text-center rounded"> Sign up</h1>
@@ -31,6 +39,9 @@ function SignUpForm(){
                   <Row className="mt-3">
                   <Button as={Col} className="mx-2" variant="info" type="submit">
                       Sign up
+                  </Button>
+                  <Button onClick={handleClick} as={Col} className="mx-2" variant="info" type="submit">
+                      Back
                   </Button>
                   </Row>
               </Form>
