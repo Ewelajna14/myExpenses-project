@@ -49,24 +49,24 @@ function SignUpForm(){
       <Row className="mt-5">
           <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
               <Form>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group controlId="formfirstName">
                       <Form.Label>First Name</Form.Label>
-                      <Form.Control type="email" placeholder="Enter first name" onChange={(e)=>setFname(e.target.value)}/>
+                      <Form.Control type="firstname" placeholder="Enter first name" onChange={(e)=>setFname(e.target.value)}/>
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group controlId="formlastName">
                       <Form.Label>Last Name</Form.Label>
-                      <Form.Control type="email" placeholder="Enter last name" onChange={(e)=>setLname(e.target.value)}/>
+                      <Form.Control type="lastname" placeholder="Enter last name" onChange={(e)=>setLname(e.target.value)}/>
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group controlId="formusername">
                       <Form.Label>Username</Form.Label>
-                      <Form.Control type="email" placeholder="Enter username" onChange ={(e)=>setUname(e.target.value)}/>
+                      <Form.Control type="username" placeholder="Enter username" onChange ={(e)=>setUname(e.target.value)}/>
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicPassword">
+                  <Form.Group controlId="formPassword">
                       <Form.Label>Password</Form.Label>
                       <Form.Control type="password" placeholder="Password" onChange={(e)=> setPass(e.target.value)}/>
                   </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
+                  <Form.Group controlId="formPassword">
                       <Form.Label>Confirm Password</Form.Label>
                       <Form.Control type="password" placeholder="confirm password" onChange={(e)=>setconfPass(e.target.value)}/>
                   </Form.Group>

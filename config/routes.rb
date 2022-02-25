@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   
 
   get '/news', to: 'news#get_news'
+
+  resources :users 
+    
   resources :expenses
 
+  resources :categories, only: [:index]
+  
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
