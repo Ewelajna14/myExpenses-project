@@ -7,7 +7,7 @@ function SignUpForm(){
     const history = useHistory()
 
     function handleClick(){
-        history.push("/")
+        history.push("/login")
     } 
 
     const[fname, setFname] = useState("")

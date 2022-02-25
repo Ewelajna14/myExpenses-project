@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function LoginForm(){
+function LoginForm({onLogin}){
     
     const[uName, setUname] = useState("")
     const [pass, setPass] = useState("")
@@ -21,7 +21,7 @@ function LoginForm(){
             body: JSON.stringify(logUser),
           }
         ).then((r)=>r.json())
-        .then((logUser)=>console.log(logUser))
+        .then((logUser)=>onLogin(logUser))
 
     }
 
