@@ -1,22 +1,18 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import {Container, Button, Stack, Row} from "react-bootstrap"
 import ExpenseCard from "./ExpenseCard"
 import CreateExpense from "./CreateExpense";
+import useFetch from "./useFetch";
 
 function Home(){
     const [show, setShow] = useState(false);
-    const [expenses, setExpense] = useState([])
 
     const handleShow = () => setShow(true);
-
     const handleClose = () => setShow(false);
 
 
-    useEffect(()=>{
-    fetch("/expenses")
-    .then((r)=>r.json())
-    .then(data=>setExpense(data))
-    }, [])
+    const {data: expenses, isPending, error} = useFetch("/expenses")
+
 
    let oneExpense = expenses.map((expense)=>{
        return(<ExpenseCard key={expense.id} expense={expense}/>)
@@ -30,7 +26,9 @@ function Home(){
             <Button variant="info" onClick={handleShow}> Create Expense</Button>
              <CreateExpense show={show} handleClose={handleClose}/>
             <Row className="mt-5">
-            {oneExpense}
+             {error && <div>{error}</div>} 
+             {isPending && <div>Loading...</div> }  
+             {oneExpense}
             </Row>
         </Container>
     )

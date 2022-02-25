@@ -1,29 +1,12 @@
 import {Modal, Form, ModalBody, FormGroup, FormLabel, FormControl, FormSelect, Button} from "react-bootstrap"
 import React, {useState} from "react"
+import useFetch from "./useFetch";
 
 function CreateExpense({show, handleClose}) {
 
+const {data: categories, isPending, error} = useFetch("/categories")
    
 
-    const fetchCategories = fetch("/categories")
-     .then((response) =>  response.json())
-       .then((data) => {
-           return data
-       })
-      
-      async function loadCategories () {
-      const a = await fetchCategories
-      return a
-      }
-
-
-
-     //let selections = Array.from(categories).map(category =>(
-        //<option key={category.id} value={category.id}>{category.category}</option>
-    //))
-
-    
-   
     function handleSubmit(){
 
     }
@@ -40,6 +23,9 @@ function CreateExpense({show, handleClose}) {
              <FormGroup className="mb-3" controlId="category">
                  <FormLabel>Category</FormLabel>
                  <Form.Select>
+                     {categories.map(category=>(
+                         <option key={category.id} value={category.id}>{category.category}</option>
+                     ))}
                  </Form.Select>
              </FormGroup>
              <Button variant="info" onClick={handleClose}> Close</Button>
@@ -51,7 +37,3 @@ function CreateExpense({show, handleClose}) {
 }
 
 export default CreateExpense
-
-//{categories.map(category=>(
- //   <option key={category.id} value={category.id}>{category.category}</option>
-//))}
