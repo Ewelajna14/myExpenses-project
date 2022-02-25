@@ -1,7 +1,10 @@
 class ExpensesController < ApplicationController
 
+
+    #path /users/:user_id/expenses  action expenses#index
     def index
-        expenses = Expense.all
+        user = User.find(params[:user_id])
+        expenses = user.expenses
         render json: expenses, each_serializer: ExpenseSerializer
     end
 

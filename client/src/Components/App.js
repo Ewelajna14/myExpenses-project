@@ -6,27 +6,24 @@ import Home from "./Home";
 import '../App.css';
 
 function App() {
+  
   let history = useHistory()
-  const [user, setUser] = useState();
-  const [loggedIn, setLoggedIn] = useState(false);
-
+  const [user, setUser] = useState(null);
   
 
   useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
+  fetch("/me").then((r) => {
+   if (r.ok) {
+    r.json().then((user) => setUser(user));
+    }
+   });
   }, []);
 
   
-  function onLogin(newUser){
-    console.log(newUser)
-   if (newUser && user) {
+  function onLogin(loguser){
+    setUser(loguser)
     history.push("/")
-   }
+   
   }
 
   
@@ -37,11 +34,9 @@ function App() {
       <LoginForm onLogin={onLogin}/>
       </Route>  
       <Route exact path="/sign">
-      <SignUpForm />
+      <SignUpForm onLogin={onLogin}/>
       </Route>
-      <Route exact path="/">
-      <Home/>
-      </Route>
+      <Route exact path="/" component={()=><Home user={user}/>}/>
       </Switch>
     </div>
   );

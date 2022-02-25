@@ -9,7 +9,7 @@ function LoginForm({onLogin}){
 
     function handleSubmit(e){
         e.preventDefault()
-        const logUser = {
+        const user = {
             username: uName,
             password: pass
         }
@@ -18,10 +18,10 @@ function LoginForm({onLogin}){
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(logUser),
+            body: JSON.stringify(user),
           }
         ).then((r)=>r.json())
-        .then((logUser)=>onLogin(logUser))
+        .then((user)=>onLogin(user))
 
     }
 

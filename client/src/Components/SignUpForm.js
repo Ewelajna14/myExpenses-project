@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-function SignUpForm(){
+function SignUpForm( {onLogin}){
 
     const history = useHistory()
 
@@ -26,7 +26,7 @@ function SignUpForm(){
             password_confirmation: confPass
         }
 
-     fetch("/signup", {
+     fetch("/users", {
          method: "POST",
          headers: {
              "Content-Type": "application/json",
@@ -34,7 +34,7 @@ function SignUpForm(){
          body: JSON.stringify(newUser),
          })
         .then((r)=> r.json())
-        .then ((newUser)=>console.log(newUser))
+        .then ((newUser)=>onLogin(newUser))
         setFname("")
         setLname("")
         setUname("")

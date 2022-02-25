@@ -48,9 +48,7 @@ const {data: categories, isPending, error} = useFetch("/categories")
              </FormGroup>
              <Button variant="info" onClick={handleClose}> Close</Button>
          </ModalBody>
-         <Stack direction="horizontal" gap="2" className="mt-3" className="mb-3">
          <Button variant="info" onClick={handleSubmit}> Create</Button>
-         </Stack >
         </Form >
         </Modal>
     )
