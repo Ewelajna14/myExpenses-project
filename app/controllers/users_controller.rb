@@ -13,9 +13,8 @@ class UsersController < ApplicationController
     end
 
     def index
-        user = User.find(params[:user_id])
-        expenses = user.expenses
-        render json: expenses, each_serializer: UserSerializer
+        users = User.all
+        render json: users, each_serializer: UserSerializer
     end
 
 

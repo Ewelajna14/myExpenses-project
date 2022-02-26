@@ -1,11 +1,20 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 
-function LoginForm({onLogin}){
+function LoginForm({onLogin, user}){
+
+    const history = useHistory()
     
     const[uName, setUname] = useState("")
     const [pass, setPass] = useState("")
+
+
+    useEffect(()=>{
+        if(user){
+     history.push("/")}
+    }, [])
+
 
     function handleSubmit(e){
         e.preventDefault()
@@ -20,8 +29,12 @@ function LoginForm({onLogin}){
             },
             body: JSON.stringify(user),
           }
-        ).then((r)=>r.json())
-        .then((user)=>onLogin(user))
+
+        ).then((r) => {
+            if (r.ok) {
+             r.json().then((user) => onLogin(user));
+             }
+            })
 
     }
 

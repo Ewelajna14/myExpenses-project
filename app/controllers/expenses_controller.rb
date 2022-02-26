@@ -8,14 +8,19 @@ class ExpensesController < ApplicationController
         render json: expenses, each_serializer: ExpenseSerializer
     end
 
+
+    #path /users/user_id/expenses
     def create
-        expense = Expense.create(expense_params)
+        user = User.find(params[:user_id])
+        expense = user.expenses.create(expense_params)
         render json: expense, status: :created
     end
+
+    #path /users/user_id/expenses:id  action#show
 
 
     private
     def expense_params
-        params.permit( :amount, :user_id, :category_id, :category )
+        params.require(:expense).permit( :amount, :user_id, :category_id, :category)
     end
 end

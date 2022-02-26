@@ -6,11 +6,10 @@ import Home from "./Home";
 import '../App.css';
 
 function App() {
-  
+
   let history = useHistory()
   const [user, setUser] = useState(null);
   
-
   useEffect(() => {
   fetch("/me").then((r) => {
    if (r.ok) {
@@ -19,6 +18,8 @@ function App() {
    });
   }, []);
 
+  console.log(user)
+
   
   function onLogin(loguser){
     setUser(loguser)
@@ -26,17 +27,24 @@ function App() {
    
   }
 
-  
-  return (
-    <div>
+  if (!user){
+    return <div>
       <Switch>
       <Route exact path="/login">
-      <LoginForm onLogin={onLogin}/>
+      <LoginForm onLogin={onLogin} user={user}/>
       </Route>  
       <Route exact path="/sign">
       <SignUpForm onLogin={onLogin}/>
       </Route>
-      <Route exact path="/" component={()=><Home user={user}/>}/>
+      </Switch>
+    </div>
+  }
+
+
+  return (
+    <div>
+      <Switch>
+      <Route exact path="/" component={()=><Home setUser={setUser} user={user}/>}/> 
       </Switch>
     </div>
   );

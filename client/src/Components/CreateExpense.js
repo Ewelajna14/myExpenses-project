@@ -2,21 +2,23 @@ import {Modal, Form, ModalBody, FormGroup, FormLabel, FormControl, FormSelect, B
 import React, {useState} from "react"
 import useFetch from "./useFetch";
 
-function CreateExpense({show, handleClose}) {
+function CreateExpense({show, handleClose, user, onCreateExpense}) {
 
-const [amount, setAmount] = useState("")
-const [cat, setCat] = useState("")
+    const [amount, setAmount] = useState(" ")
+    const [cat, setCat] = useState("")
 
-const {data: categories, isPending, error} = useFetch("/categories")
+    const {data: categories, isPending, error} = useFetch("/categories")
    
+
+    console.log(cat)
 
     function handleSubmit(e){
      e.preventDefault()
      const newExpense = {
          amount: amount,
-         category: cat
+         category_id: cat
      }
-     fetch("/expenses", {
+     fetch(`/users/${user.id}/expenses`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -24,7 +26,7 @@ const {data: categories, isPending, error} = useFetch("/categories")
         body: JSON.stringify(newExpense),
         })
        .then((r)=> r.json())
-       .then ((newExpense)=>console.log(newExpense))
+       .then ((newExpense)=>onCreateExpense(newExpense))
        setAmount("")
        setCat("")
     }
@@ -40,7 +42,7 @@ const {data: categories, isPending, error} = useFetch("/categories")
              </FormGroup>
              <FormGroup className="mb-3" controlId="category">
                  <FormLabel>Category</FormLabel>
-                 <Form.Select onSelect={(e)=>setCat(e.target.value)}>
+                 <Form.Select onChange={(e)=>setCat(e.target.value)}>
                      {categories.map(category=>(
                          <option key={category.id} value={category.id}>{category.category}</option>
                      ))}

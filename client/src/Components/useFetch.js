@@ -25,7 +25,7 @@ const useFetch=(url)=>{
         })
     }, [url])
 
-    return {data, isPending, error}
+    return {data, setData,  isPending, error}
 }
 
 export default useFetch
