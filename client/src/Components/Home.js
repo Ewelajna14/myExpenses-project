@@ -16,8 +16,25 @@ function Home({setUser, user}){
     const {data: expenses, setData: setExpenses, isPending, error} = useFetch(`/users/${user.id}/expenses`)
 
     function onCreateExpense(newExpense){
+        console.log(newExpense)
      const newExpensesArray = [...expenses, newExpense]
      setExpenses(newExpensesArray)
+    }
+
+    function onAddExpense(updatedExpense){
+        console.log(updatedExpense)
+    const updatedExpensesArray = expenses.map((expense)=>{
+        if(expense.id === updatedExpense.id){
+            return [...expenses, updatedExpense ]
+        }
+        else {return expense} 
+    })
+    setExpenses(updatedExpensesArray)
+    }
+
+    function onDelete(id){
+    const notDeletedExpenses = expenses.filter((expense)=> expense.id !== id)
+    setExpenses(notDeletedExpenses)
     }
     
 
@@ -34,7 +51,7 @@ function Home({setUser, user}){
     }
 
    let oneExpense = expenses.map((expense)=>{
-       return(<ExpenseCard key={expense.id} expense={expense}/>)
+       return(<ExpenseCard key={expense.id} expense={expense} onAddExpense={onAddExpense} user={user} onDelete={onDelete}/>)
    })
 
     return(

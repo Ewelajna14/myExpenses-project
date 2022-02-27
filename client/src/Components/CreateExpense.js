@@ -8,9 +8,6 @@ function CreateExpense({show, handleClose, user, onCreateExpense}) {
     const [cat, setCat] = useState("")
 
     const {data: categories, isPending, error} = useFetch("/categories")
-   
-
-    console.log(cat)
 
     function handleSubmit(e){
      e.preventDefault()
@@ -38,7 +35,7 @@ function CreateExpense({show, handleClose, user, onCreateExpense}) {
          <ModalBody>
              <FormGroup className="mb-3" controlId="amount">
                  <FormLabel>Amount</FormLabel>
-                 <FormControl type="text required" placeholder="$" onChange={(e)=>setAmount(e.target.value)}></FormControl>
+                 <FormControl type="number" placeholder="$" onChange={(e)=>setAmount(e.target.value)}></FormControl>
              </FormGroup>
              <FormGroup className="mb-3" controlId="category">
                  <FormLabel>Category</FormLabel>

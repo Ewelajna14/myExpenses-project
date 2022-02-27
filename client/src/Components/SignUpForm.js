@@ -6,15 +6,15 @@ function SignUpForm( {onLogin}){
 
     const history = useHistory()
 
-    function handleClick(){
-        history.push("/login")
-    } 
-
     const[fname, setFname] = useState("")
     const[lname, setLname] = useState("")
     const[uname, setUname] = useState("")
     const[pass, setPass] = useState("")
     const[confPass, setconfPass] = useState("")
+
+    function handleClick(){
+        history.push("/login")
+    } 
 
     function handleSubmit(e){
         e.preventDefault()

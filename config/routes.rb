@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   get '/news', to: 'news#get_news'
 
-  resources :users, only: [:index, :create] do  
-    resources :expenses, only: [:index, :create, :show, :update]
+  resources :users, only: [:index, :create, :update] do  
+    resources :expenses, only: [:index, :create, :show, :update, :destroy]
   end
     
   #resources :expenses, only: [:index, :create, :show, :update] 
