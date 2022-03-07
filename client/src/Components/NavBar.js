@@ -8,6 +8,7 @@ function NavBar({user}){
     <Navbar.Brand>Your's Expenses </Navbar.Brand>
     <Nav className="me-auto">
     <Nav.Link href="/">Home</Nav.Link>
+    <Nav.Link href="/news">News</Nav.Link>
     </Nav>
     <Navbar.Text>
     <h4>Signed in as {user.first_name}</h4>

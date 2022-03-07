@@ -3,6 +3,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import Home from "./Home";
+import News from "./News"
 import '../App.css';
 
 function App() {
@@ -18,9 +19,7 @@ function App() {
    });
   }, []);
 
-  console.log(user)
 
-  
   function onLogin(loguser){
     setUser(loguser)
     history.push("/")
@@ -45,6 +44,9 @@ function App() {
     <div>
       <Switch>
       <Route exact path="/" component={()=><Home setUser={setUser} user={user}/>}/> 
+      <Route exact path="/news">
+       <News user={user}/>
+      </Route>
       </Switch>
     </div>
   );

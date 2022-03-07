@@ -15,11 +15,10 @@ function Home({setUser, user}){
     
     const {data: expenses, setData: setExpenses, isPending, error} = useFetch(`/users/${user.id}/expenses`)
 
-    console.log(expenses)
-
     const total = expenses.reduce((total, expense)=>{
      return total + expense.amount
     }, 0)
+    
 
     function onCreateExpense(newExpense){
      const newExpensesArray = [...expenses, newExpense]
