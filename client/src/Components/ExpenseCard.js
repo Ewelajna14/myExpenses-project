@@ -15,6 +15,7 @@ function ExpenseCard({expense, onAddExpense, user, onDelete}){
     onDelete(expense.id)
    }
 
+
     return(
     <Card border="info" style={{ width: '18rem' }}>
     <h2>{expense.amount}</h2>

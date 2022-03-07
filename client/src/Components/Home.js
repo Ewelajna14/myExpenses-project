@@ -15,14 +15,18 @@ function Home({setUser, user}){
     
     const {data: expenses, setData: setExpenses, isPending, error} = useFetch(`/users/${user.id}/expenses`)
 
+    console.log(expenses)
+
+    const total = expenses.reduce((total, expense)=>{
+     return total + expense.amount
+    }, 0)
+
     function onCreateExpense(newExpense){
-        console.log(newExpense)
      const newExpensesArray = [...expenses, newExpense]
      setExpenses(newExpensesArray)
     }
 
     function onAddExpense(updatedExpense){
-        console.log(updatedExpense)
     const updatedExpensesArray = expenses.map((expense)=>{
        if(expense.id === updatedExpense.id){
         return updatedExpense 
@@ -67,6 +71,7 @@ function Home({setUser, user}){
              {isPending && <div>Loading...</div> }  
              {oneExpense}
             </Row>
+            <h3>Total: ${total} </h3>
         </Container>
     )
 }
