@@ -5,7 +5,7 @@ import useFetch from "./useFetch";
 function CreateExpense({show, handleClose, user, onCreateExpense}) {
 
     const [amount, setAmount] = useState(" ")
-    const [cat, setCat] = useState("")
+    const [category, setCategory] = useState("")
 
     const {data: categories, isPending, error} = useFetch("/categories")
 
@@ -13,7 +13,7 @@ function CreateExpense({show, handleClose, user, onCreateExpense}) {
      e.preventDefault()
      const newExpense = {
          amount: amount,
-         category_id: cat
+         category_id: category
      }
      fetch(`/users/${user.id}/expenses`, {
         method: "POST",
@@ -25,7 +25,7 @@ function CreateExpense({show, handleClose, user, onCreateExpense}) {
        .then((r)=> r.json())
        .then ((newExpense)=>onCreateExpense(newExpense))
        setAmount("")
-       setCat("")
+       setCategory("")
     }
 
     return(
@@ -39,7 +39,7 @@ function CreateExpense({show, handleClose, user, onCreateExpense}) {
              </FormGroup>
              <FormGroup className="mb-3" controlId="category">
                  <FormLabel>Category</FormLabel>
-                 <Form.Select onChange={(e)=>setCat(e.target.value)}>
+                 <Form.Select onChange={(e)=>setCategory(e.target.value)}>
                      {categories.map(category=>(
                          <option key={category.id} value={category.id}>{category.category}</option>
                      ))}

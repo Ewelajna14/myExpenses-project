@@ -24,9 +24,9 @@ function Home({setUser, user}){
     function onAddExpense(updatedExpense){
         console.log(updatedExpense)
     const updatedExpensesArray = expenses.map((expense)=>{
-        if(expense.id === updatedExpense.id){
-            return [...expenses, updatedExpense ]
-        }
+       if(expense.id === updatedExpense.id){
+        return updatedExpense 
+       }
         else {return expense} 
     })
     setExpenses(updatedExpensesArray)

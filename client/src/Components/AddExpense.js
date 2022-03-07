@@ -29,7 +29,7 @@ function AddExpense({show, handleClose, expense, onAddExpense, user}){
           r.json().then((updatedExpense) => {
             setNewAmount("");
             setErrors([]);
-            console.log(updatedExpense);
+           onAddExpense(updatedExpense);
           });
         } else {
           r.json().then((err) => setErrors(err.errors));

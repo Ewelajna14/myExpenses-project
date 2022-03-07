@@ -19,8 +19,6 @@ class ExpensesController < ApplicationController
     #path /users/user_id/expenses:id  action#show
 
     def show
-        user = User.find(params[:user_id])
-        expenses = user.expenses
         expenses = Expense.find(params[:id])
         render json: expenses
     end
@@ -29,10 +27,8 @@ class ExpensesController < ApplicationController
     #path / users/user_id/expenses/:id action#update
 
     def update
-        user = User.find(params[:user_id])
-        expense = user.expenses
         expense = Expense.find(params[:id])
-        expense = expense.update!(expense_params)
+        expense2 = expense.update!(expense_params)
         render json: expense
     end
 
@@ -49,7 +45,7 @@ class ExpensesController < ApplicationController
 
     private
     def expense_params
-        params.require(:expense).permit(:id, :amount, :user_id, :category_id, :category)
+        params.require(:expense).permit(:id, :amount, :user_id, :category_id)
     end
 end
 
