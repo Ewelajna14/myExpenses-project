@@ -61,7 +61,7 @@ function Home({setUser, user}){
             </Stack>
             <Button variant="info" onClick={handleShow}> Create Expense</Button>
             <Button variant="info" onClick={handleLogout} >Log Out</Button>
-             <CreateExpense show={show} handleClose={handleClose} user={user} onCreateExpense={onCreateExpense}/>
+             <CreateExpense show={show} setShow={setShow} handleClose={handleClose} user={user} onCreateExpense={onCreateExpense}/>
             <Row className="mt-5">
              {error && <div>{error}</div>} 
              {isPending && <div>Loading...</div> }  

@@ -1,7 +1,7 @@
 import {Modal, Form, ModalBody, FormGroup, FormLabel, FormControl, FormSelect, Button} from "react-bootstrap"
 import React, {useState} from "react"
 
-function AddExpense({show, handleClose, expense, onAddExpense, user}){
+function AddExpense({show, setShow, handleClose, expense, onAddExpense, user}){
 
     const[newAmount, setNewAmount] = useState("")
     const [errors, setErrors] = useState([]);
@@ -35,7 +35,7 @@ function AddExpense({show, handleClose, expense, onAddExpense, user}){
           r.json().then((err) => setErrors(err.errors));
         }
       })
-
+      setShow(false)
    }
 
 return( 

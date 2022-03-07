@@ -2,7 +2,7 @@ import {Modal, Form, ModalBody, FormGroup, FormLabel, FormControl, FormSelect, B
 import React, {useState} from "react"
 import useFetch from "./useFetch";
 
-function CreateExpense({show, handleClose, user, onCreateExpense}) {
+function CreateExpense({show, setShow, handleClose, user, onCreateExpense}) {
 
     const [amount, setAmount] = useState(" ")
     const [category, setCategory] = useState("")
@@ -26,6 +26,7 @@ function CreateExpense({show, handleClose, user, onCreateExpense}) {
        .then ((newExpense)=>onCreateExpense(newExpense))
        setAmount("")
        setCategory("")
+       setShow(false)
     }
 
     return(
