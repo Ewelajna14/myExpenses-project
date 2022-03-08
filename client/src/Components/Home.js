@@ -19,8 +19,6 @@ function Home({setUser, user}){
     
     const {data: expenses, setData: setExpenses, isPending, error} = useFetch(`/users/${user.id}/expenses`)
 
-
-
     function handleMonthClick(e){
     setMonth(e.target.value) 
     }
@@ -78,6 +76,8 @@ function Home({setUser, user}){
     return totalExpense + expense.amount
    }, 0)
 
+   
+
 
     return(
         <Container className="my-3">
@@ -86,24 +86,24 @@ function Home({setUser, user}){
              <CreateExpense show={show} setShow={setShow} handleClose={handleClose} user={user} onCreateExpense={onCreateExpense}/>
             <Row className="mt-5">
             <Stack direction="horizontal" gap={3} className="mb-4">
-             <Button variant="secondary" value ="2022-01" onClick = {handleMonthClick}>Jan</Button>
-             <Button variant="secondary" value ="2022-02" onClick = {handleMonthClick}>Feb</Button>
+             <Button variant="secondary" value ="2022-01" onClick = {handleMonthClick}>January</Button>
+             <Button variant="secondary" value ="2022-02" onClick = {handleMonthClick}>February</Button>
              <Button variant="secondary" value ="2022-03" onClick = {handleMonthClick}>March</Button>
-             <Button variant="secondary" value ="2022-04" onClick = {handleMonthClick}> Apr</Button>
+             <Button variant="secondary" value ="2022-04" onClick = {handleMonthClick}> April</Button>
              <Button variant="secondary" value ="2022-05" onClick = {handleMonthClick}>May</Button>
-             <Button variant="secondary" value ="2022-06" onClick = {handleMonthClick}>Jun</Button>
-             <Button variant="secondary" value ="2022-07" onClick = {handleMonthClick}> Jul</Button>
-             <Button variant="secondary" value ="2022-08" onClick = {handleMonthClick}>Aug</Button>
-             <Button variant="secondary" value ="2022-09" onClick = {handleMonthClick}>Sep</Button>
-             <Button variant="secondary" value ="2022-10" onClick = {handleMonthClick}> Oct</Button>
-             <Button variant="secondary" value ="2022-11" onClick = {handleMonthClick}>Nov</Button>
-             <Button variant="secondary" value ="2022-12" onClick = {handleMonthClick}>Dec</Button>
+             <Button variant="secondary" value ="2022-06" onClick = {handleMonthClick}>June</Button>
+             <Button variant="secondary" value ="2022-07" onClick = {handleMonthClick}> July</Button>
+             <Button variant="secondary" value ="2022-08" onClick = {handleMonthClick}>August</Button>
+             <Button variant="secondary" value ="2022-09" onClick = {handleMonthClick}>September</Button>
+             <Button variant="secondary" value ="2022-10" onClick = {handleMonthClick}> October</Button>
+             <Button variant="secondary" value ="2022-11" onClick = {handleMonthClick}>November</Button>
+             <Button variant="secondary" value ="2022-12" onClick = {handleMonthClick}>December</Button>
              </Stack>
              {error && <div>{error}</div>} 
              {isPending && <div>Loading...</div> }  
              {oneExpense}
             </Row>
-            <StyledTotal>Total: ${total} </StyledTotal>
+            <StyledTotal>Total: ${total} in {month} </StyledTotal>
         </Container>
     )
 }
