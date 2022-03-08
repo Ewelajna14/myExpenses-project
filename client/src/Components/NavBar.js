@@ -3,7 +3,7 @@ import { NavLink} from "react-router-dom";
 
 function NavBar({user}){
     return(
-    <Navbar bg="info" variant="dark">
+    <Navbar bg="info" variant="dark" className="mb-4">
     <Container>
     <Navbar.Brand>Your's Expenses </Navbar.Brand>
     <Nav className="me-auto">

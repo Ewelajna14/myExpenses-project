@@ -6,6 +6,7 @@ function CreateExpense({show, setShow, handleClose, user, onCreateExpense}) {
 
     const [amount, setAmount] = useState(" ")
     const [category, setCategory] = useState("")
+    const [month, setMonth] = useState("")
 
     const {data: categories, isPending, error} = useFetch("/categories")
 
@@ -13,7 +14,8 @@ function CreateExpense({show, setShow, handleClose, user, onCreateExpense}) {
      e.preventDefault()
      const newExpense = {
          amount: amount,
-         category_id: category
+         category_id: category,
+         date: month
      }
      fetch(`/users/${user.id}/expenses`, {
         method: "POST",
@@ -26,6 +28,7 @@ function CreateExpense({show, setShow, handleClose, user, onCreateExpense}) {
        .then ((newExpense)=>onCreateExpense(newExpense))
        setAmount("")
        setCategory("")
+       setMonth("")
        setShow(false)
     }
 
@@ -46,6 +49,10 @@ function CreateExpense({show, setShow, handleClose, user, onCreateExpense}) {
                      ))}
                  </Form.Select>
              </FormGroup>
+             <Form.Group controlId="date">
+                <Form.Label>Select Date</Form.Label>
+                <Form.Control type="month" name="date" placeholder="Date" onChange={(e)=>setMonth(e.target.value)}/>
+            </Form.Group>
              <Button variant="info" onClick={handleClose}> Close</Button>
          </ModalBody>
          <Button variant="info" onClick={handleSubmit}> Create</Button>
