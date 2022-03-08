@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
-import Home from "./Home";
+import NavBar from "./NavBar"
 import News from "./News"
+import Home from "./Home";
 import '../App.css';
 
 function App() {
@@ -42,10 +43,11 @@ function App() {
 
   return (
     <div>
-      <Switch>
+      <NavBar user={user}/>
+      <Switch>    
       <Route exact path="/" component={()=><Home setUser={setUser} user={user}/>}/> 
       <Route exact path="/news">
-       <News user={user}/>
+      <News user={user}/>
       </Route>
       </Switch>
     </div>

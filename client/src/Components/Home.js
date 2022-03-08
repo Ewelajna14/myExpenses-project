@@ -2,7 +2,8 @@ import React, {useState} from "react"
 import {Container, Button, Stack, Row} from "react-bootstrap"
 import ExpenseCard from "./ExpenseCard"
 import CreateExpense from "./CreateExpense";
-import NavBar from "./NavBar"
+
+
 import useFetch from "./useFetch";
 import { useHistory} from "react-router-dom";
 
@@ -18,7 +19,7 @@ function Home({setUser, user}){
     const total = expenses.reduce((total, expense)=>{
      return total + expense.amount
     }, 0)
-    
+
 
     function onCreateExpense(newExpense){
      const newExpensesArray = [...expenses, newExpense]
@@ -59,7 +60,6 @@ function Home({setUser, user}){
 
     return(
         <Container className="my-3">
-            <NavBar user={user}/>
             <Stack direction="horizontal" gap="4" className="mb-5">
             </Stack>
             <Button variant="info" onClick={handleShow}> Create Expense</Button>

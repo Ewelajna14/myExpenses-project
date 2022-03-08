@@ -24,11 +24,13 @@ function News({user}){
 
     return(
         <div>
-            <h1>Hello {user.first_name}</h1>
-            <Button onClick={handleClick} as={Col} className="mx-2" variant="info" type="submit">
-                      Back
-            </Button>
+            {//<h1>Hello {user.first_name}</h1>
+            //<Button onClick={handleClick} as={Col} className="mx-2" variant="info" type="submit">
+             //         Back
+            //</Button>
+            }
             {newsArray}
+
         </div>
     )
 }
