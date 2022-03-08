@@ -47,7 +47,7 @@ function App() {
       <Switch>    
       <Route exact path="/" component={()=><Home setUser={setUser} user={user}/>}/> 
       <Route exact path="/news">
-      <News user={user}/>
+      <News/>
       </Route>
       </Switch>
     </div>

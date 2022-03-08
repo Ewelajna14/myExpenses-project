@@ -3,7 +3,6 @@ import styled from "styled-components"
 function NewsCard({onenews}){
     return(
     <Wrapper>
-      <h2>{onenews.category}</h2>
       <h2>{onenews.headline}</h2>
       <img src = {onenews.image} width="800" height="400"/>
       <p>{onenews.summary}</p>
@@ -15,5 +14,16 @@ function NewsCard({onenews}){
 export default NewsCard
 
 const Wrapper = styled.div `
-margin: 3rem;
+margin: 4rem;
+
+h2{
+    width: 800px;
+    font-family: 'Courier New';
+    font-weight: bold;
+}
+
+p{
+    width: 800px;
+    font-family: 'Courier New', monospace;
+}
 `
