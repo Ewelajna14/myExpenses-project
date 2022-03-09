@@ -8,7 +8,7 @@ function LoginForm({onLogin, user}){
     
     const[uName, setUname] = useState("")
     const [pass, setPass] = useState("")
-
+    const [errors, setErrors] = useState([])
 
     useEffect(()=>{
         if(user){
@@ -34,6 +34,9 @@ function LoginForm({onLogin, user}){
             if (r.ok) {
              r.json().then((user) => onLogin(user));
              }
+             else{
+                 r.json().then((error)=> setErrors(error.error))
+             }
             })
 
     }
@@ -48,7 +51,7 @@ function LoginForm({onLogin, user}){
                       <Form.Label>Username</Form.Label>
                       <Form.Control type="email" placeholder="Enter username" onChange={(e)=>setUname(e.target.value)} />
                   </Form.Group>
-
+            
                   <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
                       <Form.Control type="password" placeholder="Password" onChange={(e)=>setPass(e.target.value)} />
@@ -57,6 +60,7 @@ function LoginForm({onLogin, user}){
                   <Button as={Col} className="mx-2" variant="info" type="submit" onClick={handleSubmit}>
                       Login
                   </Button>
+                  <p className="text-center rounded" style={{ color: "red" }}>{errors}</p>
                   <p className="text-info mt-5 p-3 text-center rounded">If you dont have an account</p>
                   <Link to='/sign' className="btn btn-info">
                     Sign up
