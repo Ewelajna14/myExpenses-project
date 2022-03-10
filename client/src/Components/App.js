@@ -5,12 +5,12 @@ import SignUpForm from './SignUpForm';
 import NavBar from "./NavBar"
 import News from "./News"
 import Home from "./Home";
-import '../App.css';
+
 
 function App() {
 
-  let history = useHistory()
   const [user, setUser] = useState(null);
+  let history = useHistory();
   
   useEffect(() => {
   fetch("/me").then((r) => {
@@ -23,14 +23,13 @@ function App() {
 
   function onLogin(loguser){
     setUser(loguser)
-    history.push("/")
-   
+    history.push("/home")
   }
 
   if (!user){
     return <div>
       <Switch>
-      <Route exact path="/login">
+      <Route exact path="/">
       <LoginForm onLogin={onLogin} user={user}/>
       </Route>  
       <Route exact path="/sign">
@@ -40,12 +39,11 @@ function App() {
     </div>
   }
 
-
   return (
     <div>
       <NavBar user={user}/>
       <Switch>    
-      <Route exact path="/" component={()=><Home setUser={setUser} user={user}/>}/> 
+      <Route exact path="/home" component={()=><Home setUser={setUser} user={user}/>}/> 
       <Route exact path="/news">
       <News/>
       </Route>

@@ -12,7 +12,7 @@ function LoginForm({onLogin, user}){
 
     useEffect(()=>{
         if(user){
-     history.push("/")}
+     history.push("/home")}
     }, [])
 
 

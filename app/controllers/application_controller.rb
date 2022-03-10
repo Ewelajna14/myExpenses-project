@@ -18,10 +18,10 @@ def authorize
 end
 
 
-
 def render_unprocessable_entity(exception)
-  render json: {errors: exception.record.errrors.full_messages}, status: :unprocessable_entity
+  render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
 end
+
 
 def render_record_not_found
   render json: {error: ["Not Found"] }, status: :not_found

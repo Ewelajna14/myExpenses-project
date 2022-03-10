@@ -2,7 +2,6 @@
 import styled from "styled-components";
 
 function Error({err}){
-    console.log(err)
 return(
     <Container>
       <Message>{err}</Message>

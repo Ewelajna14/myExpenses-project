@@ -3,8 +3,6 @@ import {Container, Button,  Row, Stack} from "react-bootstrap"
 import styled from "styled-components"
 import ExpenseCard from "./ExpenseCard"
 import CreateExpense from "./CreateExpense";
-
-
 import useFetch from "./useFetch";
 import { useHistory} from "react-router-dom";
 
@@ -54,7 +52,7 @@ function Home({setUser, user}){
           setUser(null)
         }
       })  
-    history.push("/login")
+    history.push("/")
     }
 
 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-
+import Error from "./Error";
 function SignUpForm( {onLogin}){
 
     const history = useHistory()
@@ -11,9 +11,10 @@ function SignUpForm( {onLogin}){
     const[uname, setUname] = useState("")
     const[pass, setPass] = useState("")
     const[confPass, setconfPass] = useState("")
+    const [errors, setErrors] = useState([])
 
     function handleClick(){
-        history.push("/login")
+        history.push("/")
     } 
 
     function handleSubmit(e){
@@ -33,8 +34,14 @@ function SignUpForm( {onLogin}){
          },
          body: JSON.stringify(newUser),
          })
-        .then((r)=> r.json())
-        .then ((newUser)=>onLogin(newUser))
+        .then((r)=> {
+            if(r.ok){
+            r.json().then((newUser) => onLogin(newUser))  
+            } else {
+             r.json().then((error)=> setErrors(error.errors))   
+            }
+        })
+       
         setFname("")
         setLname("")
         setUname("")
@@ -70,6 +77,7 @@ function SignUpForm( {onLogin}){
                       <Form.Label>Confirm Password</Form.Label>
                       <Form.Control type="password" placeholder="confirm password" onChange={(e)=>setconfPass(e.target.value)}/>
                   </Form.Group>
+                  {errors.map((err)=>(<Error key={err} err={err} />))}
                   <Row className="mt-3">
                   <Button onClick={handleSubmit} as={Col} className="mx-2" variant="info" type="submit">
                       Sign up
@@ -86,3 +94,4 @@ function SignUpForm( {onLogin}){
 }
 
 export default SignUpForm
+
