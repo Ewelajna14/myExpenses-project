@@ -18,7 +18,7 @@ don't already have them.
 
 ## Setup
 
-Start by **cloning** the project template repository to your local environment
+Start by **cloning** this repository to your local environment
 
 ```console
 $ git clone https://github.com/Ewelajna14/phase4-rails-ruby-project your-project-name
