@@ -64,6 +64,37 @@ Click on 'Close' to reject and close window
 Change month by clicking on button with different month name
 Clik on Log out to close the session, after that you will be redirected to login page 
 
+## About the project - Backend
+
+Backend is running on http://localhost:3000/
+
+Routes are defined in routes.rb file
+To see this routes in browser user must be logged in otherwise yoy will see "Not authorized" message
+
+To see categories go to:
+http://localhost:3000/categories
+
+To see infortmation about currently logged in user go to:
+http://localhost:3000/me
+
+To see information about user's expenses go to: 
+http://localhost:3000/users/user_id/expenses  where user_id is a number 
+http://localhost:3000/users/3/expenses
+
+To see information about one expense for user go to 
+http://localhost:3000/users/user_id/expenses:id 
+which with data looks like:
+http://localhost:3000/users/3/expenses/45
+
+Other routes are related witch create, update and destroy actions and can be triggered from Frontend:
+create new user after submitting Sign up form
+create new session after login
+destroy session after log out
+create new expense after clicking on 'Create Expense' and then 'Create' button
+update expense after clicking on 'Add Expense' and then 'Create' button
+destroy expense after clicking on 'Delete' button
+
+
 ## Deploying
 
 This application has all the starter code needed to help you deploy your
