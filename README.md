@@ -87,12 +87,19 @@ which with data looks like:
 http://localhost:3000/users/3/expenses/45
 
 Other routes are related witch create, update and destroy actions and can be triggered from Frontend:
+
 create new user after submitting Sign up form
+
 create new session after login
+
 destroy session after log out
+
 create new expense after clicking on 'Create Expense' and then 'Create' button
+
 update expense after clicking on 'Add Expense' and then 'Create' button
+
 destroy expense after clicking on 'Delete' button
+
 
 
 ## Deploying
