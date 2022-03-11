@@ -40,9 +40,14 @@ You can use the following commands to run the application:
 - `npm start --prefix client`: run the frontend on
   [http://localhost:4000](http://localhost:4000)
 
-##About the project - Frontend
+## About the project - Frontend
 
 Navigate to Sign up page, fill in the information to create new user.
+
+![sign_up](https://user-images.githubusercontent.com/89812100/157780406-b584c851-73aa-48c7-aeed-87b5b983c419.jpg)
+
+After that you will be redirected to home page
+
 Click on 'Create Expense' button to create new expense, type in amount, select category and date 
 ![create_expense](https://user-images.githubusercontent.com/89812100/157778795-ebc0c330-2ca2-4674-bc83-a33cd6424f97.jpg)
 
