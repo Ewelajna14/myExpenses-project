@@ -46,9 +46,18 @@ Navigate to Sign up page, fill in the information to create new user.
 Click on 'Create Expense' button to create new expense, type in amount, select category and date 
 ![create_expense](https://user-images.githubusercontent.com/89812100/157778795-ebc0c330-2ca2-4674-bc83-a33cd6424f97.jpg)
 
+Click on 'Create' to confirm and create
+Click on 'Close' to reject and close window
 
+Once Expense Card is created to add new expenses to the existing category just click on 'Add Expense' button
 
+![add_expense](https://user-images.githubusercontent.com/89812100/157779588-9b5daa69-af09-4008-8551-e24b28b55708.jpg)
 
+Click on 'Create' to confirm and create
+Click on 'Close' to reject and close window
+
+Change month by clicking on button with different month name
+Clik on Log out to close the session, after that you will be redirected to login page 
 
 ## Deploying
 
