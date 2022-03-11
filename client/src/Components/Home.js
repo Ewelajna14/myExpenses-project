@@ -7,13 +7,18 @@ import useFetch from "./useFetch";
 import { useHistory} from "react-router-dom";
 
 function Home({setUser, user}){
-
-
+    
+    const current = new Date();
+    const currentYear = current.getFullYear()
+    const currentMonth = current.getMonth()+1
+    const date = `${currentYear}-${currentMonth<10?`0${currentMonth}`:`${currentMonth}`}`
+    
     const history = useHistory()
     const [show, setShow] = useState(false);
-    const[month, setMonth] = useState("2022-03")
+    const[month, setMonth] = useState(date)
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+
     
     const {data: expenses, setData: setExpenses, isPending, error} = useFetch(`/users/${user.id}/expenses`)
 
