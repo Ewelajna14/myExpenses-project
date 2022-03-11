@@ -44,8 +44,9 @@ You can use the following commands to run the application:
 
 Navigate to Sign up page, fill in the information to create new user.
 Click on 'Create Expense' button to create new expense, type in amount, select category and date 
+![create_expense](https://user-images.githubusercontent.com/89812100/157778795-ebc0c330-2ca2-4674-bc83-a33cd6424f97.jpg)
 
-![login](https://user-images.githubusercontent.com/89812100/157778708-bee083aa-9d5d-47c5-b578-88fc64d40c75.jpg)
+
 
 
 
