@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
 
-
+    before_action :is_authorized_to_see
+    
     #path /users/:user_id/expenses  action expenses#index
     def index
         user = User.find(params[:user_id])
@@ -47,6 +48,13 @@ class ExpensesController < ApplicationController
     def expense_params
         params.require(:expense).permit(:id, :amount, :user_id, :category_id, :date)
     end
+    
+    def is_authorized_to_see
+        user = User.find(params[:user_id])
+        permitted = @current_user.id == user.id
+        render json: "Accessibility is not permitted - You can't see other's expenses", status: :forbidden unless permitted
+    end
+    
 end
 
 
